@@ -5,3 +5,10 @@ This project is a web application that provides users with an easy and convenien
 With this application, users can easily organize and keep track of their clothing inventory, making it easier to plan outfits and avoid purchasing duplicate items.
 
 #### For a detailed overview of the purpose, goals, and abstract view of this project, please refer to the accompanying PowerPoint presentation.
+
+
+## Tech Stack
+
+**Client:** React
+
+**Server:** Node.js
