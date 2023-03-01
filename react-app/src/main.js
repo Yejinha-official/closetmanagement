@@ -1,27 +1,43 @@
 // if users log in, view this main page component 
-import React from 'react';
+import React,{useState} from 'react';
 import CardComponent from './cards.js';
-import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import { Container } from '@material-ui/core';
+import { Container, Button, MenuItem, Select, Modal } from '@material-ui/core';
+import MyModal from './mymodal';
 
 
 function Main(){
-    var age ;
+    let sort ;
 
     const handleChange=(event)=>{
         alert(event.target.value);
     };
 
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+
+    const handleChildStateChange = (childState) => {
+        setOpen(childState);
+      };
+
+    const handleChildSubmit = (inputValue) => {
+        alert(`Received input value from child component: ${inputValue}`);
+      };
+
     return(
         <main>
             <Container maxWidth='md'>
              <div className='right'>
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" onClick={handleOpen}>
                     옷 추가 
                 </Button>
-                <Select value={age} onChange={handleChange}>
+                <Modal open={open}>
+                     <MyModal onChildStateChange={handleChildStateChange} onSubmit={handleChildSubmit}></MyModal>
+                </Modal>
+                <Select value={sort} onChange={handleChange}>
                     <MenuItem value={10}>Ten</MenuItem>
                     <MenuItem value={20}>Twenty</MenuItem>
                     <MenuItem value={30}>Thirty</MenuItem>
